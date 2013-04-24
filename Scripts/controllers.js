@@ -13,10 +13,13 @@ function NMRSolventCalculatorControl($scope) {
 
   }
 
-  $scope.removeSolvent = function(solvent) {
-    $scope.solvents.splice($scope.solvents.indexOf(solvent), 1);
+  $scope.removeSolvent = function(id) {
+    $scope.solvents.splice(id, 1);
   }
 
+$scope.getSolventClass = function(name) {
+  return "solvent-"+name;
+}
 
   $scope.$watch(function() {
     return angular.toJson($scope.solvents);

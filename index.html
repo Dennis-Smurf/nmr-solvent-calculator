@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="NMRSolventCalculatorModule">
+<html ng-app="NMRSolventCalculatorModule" id="ng-app" >
     
     <head>
         <title>
@@ -9,6 +9,10 @@
         <link href="Content/bootstrap.min.css" rel="stylesheet" />
         <link href="Content/solvents.css" rel="stylesheet" />
         <link href="Content/validation.css" rel="stylesheet" />
+         <!--[if lte IE 8]>
+      <script type="text/javascript" src="Scripts/json2.js"></script>
+    <![endif]-->
+      
         <script src="Scripts/Solvents.js">
         </script>
         <script src="Scripts/angular.min.js">
@@ -64,11 +68,11 @@
                                         <span class="caret"></span>
 
                                     </a>&nbsp;
-                            <i class="solvent-{{solvent.name}}"></i>
+                            <i ng-class="getSolventClass(solvent.name)"></i>
                                     <div class="dropdown-menu span8">
                                         <div class="span2" ng-repeat="availableSolvent in availableSolvents">
                                             <a href="#" ng-click="setSolvent(solvent, availableSolvent)">
-                                                <i class="solvent-{{availableSolvent.name}}"></i>
+                                                <i ng-class="getSolventClass(availableSolvent.name)"></i>
                                                 <span>{{availableSolvent.name}}</span>
 
                                             </a>
@@ -104,7 +108,7 @@
                             </div>
                         </td>
                         <td>
-                            <button class="btn" type="button" ng-show="!$first" ng-click="removeSolvent(solvent)">
+                            <button class="btn" type="button" ng-show="!$first" ng-click="removeSolvent($index)">
                                 Remove
                             </button>
                         </td>
@@ -123,7 +127,7 @@
                 Add im(purity)
             </button>
         </div>
-        <script src="Scripts/jquery-2.0.0.js">
+        <script src="Scripts/jquery-1.9.1.min.js">
         </script>
         <script src="Scripts/bootstrap.min.js">
         </script>
