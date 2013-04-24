@@ -1,5 +1,5 @@
 ﻿var solventsList = [
-    { name: "impurity", mass: 0, nrH: 1 },
+    { name: "impurity", mass: 0, nrH: 1, integral: 0 },
     { name: "MeOH", mass: 32.04, nrH: 3 },
     { name: "EtOH", mass: 46.07, nrH: 3 },
     { name: "iPrOH", mass: 60.10, nrH: 6 },

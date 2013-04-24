@@ -1,91 +1,130 @@
-﻿<!DOCTYPE html>
-<html ng-app="NMRSolventCalculatorModule" >
-<head>
-    <title>nmr massa percentage calculator</title>
-    <meta http-equiv="X-UA-Compatible" content="edge" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/solvents.css" rel="stylesheet" />
-    <link href="Content/validation.css" rel="stylesheet" />
-
-    <script src="Scripts/Solvents.js"></script>
-    <script src="Scripts/angular.min.js"></script>
-    <script src="Scripts/controllers.js"></script>
-</head>
-<body  ng-controller="NMRSolventCalculatorControl">
-    <br />
-    <div class="span8">
-  
-   <table class="table table-condensed table-hover">
+<!DOCTYPE html>
+<html ng-app="NMRSolventCalculatorModule">
+    
+    <head>
+        <title>
+            nmr massa percentage calculator
+        </title>
+        <meta http-equiv="X-UA-Compatible" content="edge" />
+        <link href="Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="Content/solvents.css" rel="stylesheet" />
+        <link href="Content/validation.css" rel="stylesheet" />
+        <script src="Scripts/Solvents.js">
+        </script>
+        <script src="Scripts/angular.min.js">
+        </script>
+        <script src="Scripts/controllers.js">
+        </script>
+    </head>
+    
+    <body ng-controller="NMRSolventCalculatorControl">
+        <br />
+        <div class="span8">
+            <table class="table table-condensed table-hover">
                 <thead>
                     <tr>
-                        <th>(im)purity</th>
-                        <th>mass</th>
-                        <th># of H</th>
-                        <th>integral</th>
-                        <th>mol%</th>
-                        <th>wt%</th>
-                        <th></th>
+                        <th>
+                            (im)purity
+                        </th>
+                        <th>
+                            mass
+                        </th>
+                        <th>
+                            # of H
+                        </th>
+                        <th>
+                            integral
+                        </th>
+                        <th>
+                            mol%
+                        </th>
+                        <th>
+                            wt%
+                        </th>
+                        <th>
+                        </th>
+                        <th>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="solvent in solvents">
-                        <td >
+                        <td>
                             <div ng-switch on="$first">
-                              <span ng-switch-when="true">{{solvent.name}}</span>
-                               <div ng-switch-default class="btn-group">
+                                <span ng-switch-when="true">
+                                    {{solvent.name}}
+                                </span>
+                                <div ng-switch-default class="btn-group">
                                     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+
                                         <span>{{solvent.name}}</span>
+
                                         <span class="caret"></span>
-                                    </a>
-                       
-                                    <div class="dropdown-menu span8"  >
+
+                                    </a>&nbsp;
+                            <i class="solvent-{{solvent.name}}"></i>
+                                    <div class="dropdown-menu span8">
                                         <div class="span2" ng-repeat="availableSolvent in availableSolvents">
-                                            <a href="#" ng-click="setSolvent(solvent, availableSolvent)" >
+                                            <a href="#" ng-click="setSolvent(solvent, availableSolvent)">
+                                                <i class="solvent-{{availableSolvent.name}}"></i>
                                                 <span>{{availableSolvent.name}}</span>
+
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        
                         </td>
                         <td>
-                            <input type="text" class="input-mini" placeholder="Mass" ng-model="solvent.mass" />
-                            
+                            <input type="text" class="input-mini" placeholder="Mass" ng-model="solvent.mass"
+                            />
                         </td>
                         <td>
-                            <input type="text" placeholder="nrH" class="input-mini" ng-model="solvent.nrH"  />
+                            <input type="text" placeholder="nrH" class="input-mini" ng-model="solvent.nrH"
+                            />
                         </td>
                         <td>
-                            <input type="text" placeholder="integral" class="input-mini" ng-model="solvent.integral"/>
+                            <input type="text" placeholder="integral" class="input-mini" ng-model="solvent.integral"
+                            />
                         </td>
-                        <td><div >
-                          <span ng-show="!hasErrors">{{solvent.molPercentage | number:2}}%</span>
+                        <td>
+                            <div>
+                                <span ng-show="!hasErrors">
+                                    {{solvent.molPercentage | number:2}}%
+                                </span>
                             </div>
                         </td>
-                        <td><div>
-                          <span ng-show="!hasErrors">{{solvent.weightPercentage | number:2}}%</span>
+                        <td>
+                            <div>
+                                <span ng-show="!hasErrors">
+                                    {{solvent.weightPercentage | number:2}}%
+                                </span>
                             </div>
                         </td>
                         <td>
-                           
-                            <button class="btn" type="button" ng-show="!$first" ng-click="removeSolvent(solvent)">Remove</button>
-
+                            <button class="btn" type="button" ng-show="!$first" ng-click="removeSolvent(solvent)">
+                                Remove
+                            </button>
                         </td>
                         <td>
-                            <code ng-show="solvent.hasErrors">Please enter a number</code>
-                            <code ng-show="solvent.nrHError">nrH should not be 0</code>
+                            <code ng-show="solvent.hasErrors">
+                                Please enter a number
+                            </code>
+                            <code ng-show="solvent.nrHError">
+                                nrH should not be 0
+                            </code>
                         </td>
                     </tr>
-                   
                 </tbody>
             </table>
-            <button class="btn" ng-click="addSolvent()">Add im(purity)</button>           
+            <button class="btn" ng-click="addSolvent()">
+                Add im(purity)
+            </button>
+        </div>
+        <script src="Scripts/jquery-2.0.0.js">
+        </script>
+        <script src="Scripts/bootstrap.min.js">
+        </script>
+    </body>
 
-
-    </div>
-        <script src="Scripts/jquery-2.0.0.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-
-</body>
 </html>
