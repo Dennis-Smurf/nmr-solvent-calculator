@@ -1,9 +1,8 @@
 
 function NMRSolventCalculatorControl($scope) {
-    $scope.availableSolvents = solventsList;
-    var solvent = { name: "Product", integral: 1, mass: 0, nrH: 1 , relativeH:0};
 
-    $scope.solvents = [solvent];
+    $scope.availableSolvents = solventsList;
+
     $scope.setSolvent = function (currentSolvent, selectedSolvent) {
         currentSolvent.name = selectedSolvent.name; 
         currentSolvent.mass = selectedSolvent.mass;
@@ -15,19 +14,57 @@ function NMRSolventCalculatorControl($scope) {
   
     }
 
+    $scope.removeSolvent = function(solvent) {
+      $scope.solvents.splice($scope.solvents.indexOf(solvent), 1);
+    }
+
+
     $scope.$watch(function () { return angular.toJson($scope.solvents); },
        function (newval, oldval) {
-         
-           setRelativeH();
+            validateSolvents();
+            if (!$scope.hasErrors) {
+                           setRelativeH();
            setweightPercentage();
+            };
+
 
        }, true);
      
+
+
+    function validateSolvents() {
+          angular.forEach($scope.solvents, function (solvent) {
+              var integral = parseFloat(solvent.integral);
+               var nrH = parseFloat(solvent.nrH);
+               var mass = parseFloat(solvent.mass);
+               solvent.nrHError = false;
+                solvent.hasErrors = false;
+
+               if ( isNaN(integral) || isNaN(nrH) || isNaN(mass) ) {
+                solvent.hasErrors = true;
+                  $scope.hasErrors = true;
+               }
+               else
+               {
+                if (nrH==0) {
+                    solvent.nrHError = true;
+                    $scope.hasErrors = true;
+                }
+                else
+                {
+                      $scope.hasErrors = false;
+                }
+               }
+          });
+
+    }
+
     function setRelativeH() {
         angular.forEach($scope.solvents, function (solvent) {
             var integral = parseFloat(solvent.integral);
             if (isNaN(integral)) {
                 integral = 0;
+              
             }
             var nrH = parseFloat(solvent.nrH);
             if (isNaN(nrH)) {
@@ -52,16 +89,22 @@ function NMRSolventCalculatorControl($scope) {
             var totalRelativemass = 0;
             angular.forEach($scope.solvents, function (solvent) {
                 if (totalrelH > 0) {
-                    solvent.molPercentage = solvent.relativeH / totalrelH;
+                    solvent.molPercentage = solvent.relativeH * 100 / totalrelH;
                     solvent.massPercentage = solvent.molPercentage * solvent.mass;
                     totalRelativemass += solvent.massPercentage;
                 }
             });
             angular.forEach($scope.solvents, function (solvent) {
                 if (totalRelativemass > 0) {
-                    solvent.weightPercentage=solvent.massPercentage / totalRelativemass;
+                    solvent.weightPercentage=solvent.massPercentage * 100 / totalRelativemass;
                 }
             });
         }
-        
+          
+    var solvent = { name: "Product", integral: 1, mass: 0, nrH: 1 , relativeH:0};
+    $scope.solvents = [solvent];
+    $scope.addSolvent();  
 }
+
+var app = angular.module('NMRSolventCalculatorModule', []);
+
