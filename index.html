@@ -1,136 +1,139 @@
 <!DOCTYPE html>
-<html ng-app="NMRSolventCalculatorModule" id="ng-app" >
-    
-    <head>
-        <title>
-            nmr massa percentage calculator
-        </title>
-        <meta http-equiv="X-UA-Compatible" content="edge" />
-        <link href="Content/bootstrap.min.css" rel="stylesheet" />
-        <link href="Content/solvents.css" rel="stylesheet" />
-        <link href="Content/validation.css" rel="stylesheet" />
-         <!--[if lte IE 8]>
-      <script type="text/javascript" src="Scripts/json2.js"></script>
+<html ng-app="NMRSolventCalculatorModule" id="ng-app">
+
+<head>
+    <title>
+        nmr massa percentage calculator
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="edge"/>
+    <link href="Content/bootstrap.min.css" rel="stylesheet"/>
+    <link href="Content/solvents.css" rel="stylesheet"/>
+    <link href="Content/validation.css" rel="stylesheet"/>
+    <!--[if lte IE 8]>
+    <script type="text/javascript" src="Scripts/json2.js"></script>
     <![endif]-->
-      
-        <script src="Scripts/Solvents.js">
-        </script>
-        <script src="Scripts/angular.min.js">
-        </script>
-        <script src="Scripts/controllers.js">
-        </script>
-    </head>
-    
-    <body ng-controller="NMRSolventCalculatorControl">
-        <br />
-        <div class="span8">
-     <h4><a href="https://github.com/Dennis-Smurf/NMRSolventCalculatorAng">NMR solvent residue calculator</a></h4>
-     <br />
-            <table class="table table-condensed table-hover">
-                <thead>
-                    <tr>
-                        <th>
-                            (im)purity
-                        </th>
-                        <th>
-                            mass
-                        </th>
-                        <th>
-                            # of H
-                        </th>
-                        <th>
-                            integral
-                        </th>
-                        <th>
-                            mol%
-                        </th>
-                        <th>
-                            wt%
-                        </th>
-                        <th>
-                        </th>
-                        <th>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="solvent in solvents">
-                        <td>
-                            <div ng-switch on="$first">
+
+    <script src="Scripts/Solvents.js">
+    </script>
+    <script src="Scripts/angular.min.js">
+    </script>
+    <script src="Scripts/controllers.js">
+    </script>
+</head>
+
+<body ng-controller="NMRSolventCalculatorControl">
+<br/>
+
+<div class="span8">
+    <h4><a href="https://github.com/Dennis-Smurf/NMRSolventCalculatorAng">NMR solvent residue calculator</a></h4>
+    <br/>
+    <table class="table table-condensed table-hover">
+        <thead>
+        <tr>
+            <th>
+                (im)purity
+            </th>
+            <th>
+                mass
+            </th>
+            <th>
+                # of H
+            </th>
+            <th>
+                integral
+            </th>
+            <th>
+                mol%
+            </th>
+            <th>
+                wt%
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="solvent in solvents">
+            <td>
+                <div ng-switch on="$first">
                                 <span ng-switch-when="true">
                                     {{solvent.name}}
                                 </span>
-                                <div ng-switch-default class="btn-group">
-                                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 
-                                        <span>{{solvent.name}}</span>
+                    <div ng-switch-default class="btn-group">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 
-                                        <span class="caret"></span>
+                            <span>{{solvent.name}}</span>
 
-                                    </a>&nbsp;
-                            <i ng-class="getSolventClass(solvent.name)"></i>
-                                    <div class="dropdown-menu span8">
-                                        <div class="span2" ng-repeat="availableSolvent in availableSolvents">
-                                            <a href="#" ng-click="setSolvent(solvent, availableSolvent)">
-                                                <i ng-class="getSolventClass(availableSolvent.name)"></i>
-                                                <span>{{availableSolvent.name}}</span>
+                            <span class="caret"></span>
 
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                        </a>&nbsp;
+                        <i ng-class="getSolventClass(solvent.name)"></i>
+
+                        <div class="dropdown-menu span8">
+                            <div class="span2" ng-repeat="availableSolvent in availableSolvents">
+                                <a href="#" ng-click="setSolvent(solvent, availableSolvent)">
+                                    <i ng-class="getSolventClass(availableSolvent.name)"></i>
+                                    <span>{{availableSolvent.name}}</span>
+
+                                </a>
                             </div>
-                        </td>
-                        <td>
-                            <input type="text" class="input-mini" placeholder="Mass" ng-model="solvent.mass"
-                            />
-                        </td>
-                        <td>
-                            <input type="text" placeholder="nrH" class="input-mini" ng-model="solvent.nrH"
-                            />
-                        </td>
-                        <td>
-                            <input type="text" placeholder="integral" class="input-mini" ng-model="solvent.integral"
-                            />
-                        </td>
-                        <td>
-                            <div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="text" class="input-mini" placeholder="Mass" ng-model="solvent.mass"
+                        />
+            </td>
+            <td>
+                <input type="text" placeholder="nrH" class="input-mini" ng-model="solvent.nrH"
+                        />
+            </td>
+            <td>
+                <input type="text" placeholder="integral" class="input-mini" ng-model="solvent.integral"
+                        />
+            </td>
+            <td>
+                <div>
                                 <span ng-show="!hasErrors">
                                     {{solvent.molPercentage | number:2}}%
                                 </span>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
+                </div>
+            </td>
+            <td>
+                <div>
                                 <span ng-show="!hasErrors">
                                     {{solvent.weightPercentage | number:2}}%
                                 </span>
-                            </div>
-                        </td>
-                        <td>
-                            <button class="btn" type="button" ng-show="!$first" ng-click="removeSolvent($index)">
-                                Remove
-                            </button>
-                        </td>
-                        <td>
-                            <code ng-show="solvent.hasErrors">
-                                Please enter a number
-                            </code>
-                            <code ng-show="solvent.nrHError">
-                                nrH should not be 0
-                            </code>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class="btn" ng-click="addSolvent()">
-                Add im(purity)
-            </button>
-        </div>
-        <script src="Scripts/jquery-1.9.1.min.js">
-        </script>
-        <script src="Scripts/bootstrap.min.js">
-        </script>
-    </body>
+                </div>
+            </td>
+            <td>
+                <button class="btn" type="button" ng-show="!$first" ng-click="removeSolvent($index)">
+                    Remove
+                </button>
+            </td>
+            <td>
+                <code ng-show="solvent.hasErrors">
+                    Please enter a number
+                </code>
+                <code ng-show="solvent.nrHError">
+                    nrH should not be 0
+                </code>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn" ng-click="addSolvent()">
+        Add im(purity)
+    </button>
+</div>
+<script src="Scripts/jquery-1.9.1.min.js">
+</script>
+<script src="Scripts/bootstrap.min.js">
+</script>
+</body>
 
 </html>
