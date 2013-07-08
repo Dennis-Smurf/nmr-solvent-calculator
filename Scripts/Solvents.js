@@ -23,7 +23,13 @@
 					{ multiplet: "CH sep, 6 Hz", values: [4.04, 3.90, 3.78, 3.67, 3.87, 3.92, 4.02] }
     	]
     },
-    { name: "tBuOH", mass: 74.12, nrH: 9 },
+    {
+    	name: "tBuOH", mass: 74.12, nrH: 9,
+    	HData: [
+					{ multiplet: "CH3 s", values: [1.28, 1.18, 1.11, 1.05, 1.16, 1.40, 1.24] },
+					{ multiplet: "OH", values: ["-","-",4.19, 1.55, 2.18,"-","-"], comments:["c"] }
+    	]
+    },
     { name: "MeCN", mass: 41.05, nrH: 3 },
     { name: "DCM", mass: 84.93, nrH: 2 },
     { name: "EtOAc", mass: 88.11, nrH: 3 },

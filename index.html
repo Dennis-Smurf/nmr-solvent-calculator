@@ -38,84 +38,100 @@
 						<div ng-switch on="$first">
 							<span ng-switch-when="true">{{solvent.name}}
 							</span>
-							<div ng-switch-default class="btn-group">
+							<div ng-switch-default class="dropdown">
 								<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 									<span>{{solvent.name}}</span>
 									<span class="caret"></span>
 								</a>&nbsp;
 								<i ng-class="getSolventClass(solvent.name)"></i>
 								<div class="dropdown-menu span8 ">
-							
-									<form class="control-group" >
+									<div class="row">
+										<div class="span6">
+											<form class="control-group">
 
-										<div class="span1">
-											<label>position</label>
-											<input class="span1" type="text" placeholder="ppm" ng-model="rangeFilter.ppm" />
+												<div class="span1">
+													<label>position</label>
+													<input class="span1" type="text" placeholder="ppm" ng-model="rangeFilter.ppm" />
+												</div>
+												<div class="span1">
+													<label>delta</label>
+													<input class="span1" type="text" placeholder="delta" ng-model="rangeFilter.delta" />
+												</div>
+												<div class="span1">
+													<label>solvent</label>
+													<select ng-model="rangeFilter.deuteratedSolvent" style="width: 110px;" ng-options="d.solvent for d in rangeFilter.deuteratedSolvents"></select>
+												</div>
+											</form>
 										</div>
-										<div class="span1">
-											<label>delta</label>
-											<input class="span1" type="text" placeholder="delta" ng-model="rangeFilter.delta" />
-										</div>
-										<div class="span1">
-											<label>solvent</label>
-											<select ng-model="rangeFilter.deuteratedSolvent" style="width: 110px;" ng-options="d.solvent for d in rangeFilter.deuteratedSolvents"></select>
-										</div>
-									</form>
-									
-									<div >
-										<table>
-											<tr ng-repeat="availableSolvent in availableSolvents" ng-click="setSolvent(solvent, availableSolvent)" style="cursor: hand; cursor: pointer;">
-												<td>
-													<a href="#" >
-														<i ng-class="getSolventClass(availableSolvent.name)"></i>
-													</a>
-												</td>
-												<td>
-													<a href="#" >
-														<span ng-class="{inRange: availableSolvent.inRange}">{{availableSolvent.name}}</span>
-
-													</a>
-												</td>
-												<td>
-													<span ng-repeat="hData in availableSolvent.HData">{{hData.values[rangeFilter.deuteratedSolvent.id]}} ({{hData.multiplet}})<sup ng-repeat="comment in hData.comments">{{comment}}</sup><span ng-show=" ! $last ">, </span>
-													</span>
-												</td>
-											</tr>
-										</table>
 									</div>
+									<div class="row">
+										<div class="span8">
+											<table class="table table-condensed">
+												<tr ng-repeat="availableSolvent in availableSolvents" ng-click="setSolvent(solvent, availableSolvent)" style="cursor: hand; cursor: pointer;">
+													<td>
+														<a href="#">
+															<i ng-class="getSolventClass(availableSolvent.name)"></i>
+														</a>
+													</td>
+													<td>
+														<a href="#">
+															<span ng-class="{inRange: availableSolvent.inRange}">{{availableSolvent.name}}</span>
 
+														</a>
+													</td>
+													<td>
+														<span ng-repeat="hData in availableSolvent.HData">{{hData.values[rangeFilter.deuteratedSolvent.id]}} ({{hData.multiplet}})<sup ng-repeat="comment in hData.comments">{{comment}}</sup><span ng-show=" ! $last ">, </span>
+														</span>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<div class="row">
+										<small class="span8">
 
-								</div>
+													<sup>a</sup> In these solvents the intermolecular rate of exchange is slow enough that a peak due to HDO is usually also observed; it appears at 2.81 and 3.30 ppm in acetone and DMSO, respectively. In the former solvent, it is often seen as a 1:1:1 triplet, with 2JH,D ) 1 Hz.<br />
+<sup>b</sup> 2,6-Dimethyl-4-tert-butylphenol. <br />c The signals from exchangeable protons were not always identified. d In some cases (see note a), the
+coupling interaction between the CH2 and the OH protons may be observed (J ) 5 Hz). e In CD3CN, the OH proton was seen as a multiplet
+at ä 2.69, and extra coupling was also apparent on the methylene peak. f Long-chain, linear aliphatic hydrocarbons. Their solubility in
+DMSO was too low to give visible peaks. g Hexamethylphosphoramide. h In some cases (see notes a, d), the coupling interaction between
+the CH3 and the OH protons may be observed (J ) 5.5 Hz). i Poly(dimethylsiloxane). Its solubility in DMSO was too low to give visible
+peaks.
+
+										</small>
 							</div>
+
 						</div>
+	</div>
+	</div>
 					</td>
 					<td>
 						<input type="text" class="input-mini" placeholder="Mass" ng-model="solvent.mass" />
 					</td>
-					<td>
-						<input type="text" placeholder="nrH" class="input-mini" ng-model="solvent.nrH" />
-					</td>
-					<td>
-						<input type="text" placeholder="integral" class="input-mini" ng-model="solvent.integral" />
-					</td>
-					<td>
-						<div>
-							<span ng-show="!hasErrors">{{solvent.molPercentage | number:2}}%</span>
-						</div>
-					</td>
-					<td>
-						<div>
-							<span ng-show="!hasErrors">{{solvent.weightPercentage | number:2}}%</span>
-						</div>
-					</td>
-					<td>
-						<button class="btn" type="button" ng-show="!$first" ng-click="removeSolvent($index)">Remove</button>
-					</td>
-					<td>
-						<code ng-show="solvent.hasErrors">Please enter a number</code>
-						<code ng-show="solvent.nrHError">nrH should not be 0</code>
-					</td>
-				</tr>
+	<td>
+		<input type="text" placeholder="nrH" class="input-mini" ng-model="solvent.nrH" />
+	</td>
+	<td>
+		<input type="text" placeholder="integral" class="input-mini" ng-model="solvent.integral" />
+	</td>
+	<td>
+		<div>
+			<span ng-show="!hasErrors">{{solvent.molPercentage | number:2}}%</span>
+		</div>
+	</td>
+	<td>
+		<div>
+			<span ng-show="!hasErrors">{{solvent.weightPercentage | number:2}}%</span>
+		</div>
+	</td>
+	<td>
+		<button class="btn" type="button" ng-show="!$first" ng-click="removeSolvent($index)">Remove</button>
+	</td>
+	<td>
+		<code ng-show="solvent.hasErrors">Please enter a number</code>
+		<code ng-show="solvent.nrHError">nrH should not be 0</code>
+	</td>
+	</tr>
 			</tbody>
 		</table>
 		<button class="btn" ng-click="addSolvent()">Add im(purity)</button>
