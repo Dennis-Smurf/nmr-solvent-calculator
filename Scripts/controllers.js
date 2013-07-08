@@ -1,12 +1,30 @@
 function NMRSolventCalculatorControl($scope) {
 
+	var solvent = {
+		name: "Product",
+		integral: 1,
+		mass: 0,
+		nrH: 1,
+		relativeH: 0
+	};
+	//TODO:per gedeutereerd oplosmiddel delta ppm
+
+
+	$scope.rangeFilter = {
+		ppm : 4,
+		delta : 0.1,
+		deuteratedSolvents: [{ id: 0, solvent: "CDCl3" }, { id: 1, solvent: "(CD3)2CO" }, { id: 2, solvent: "(CD3)2SO" }, { id: 3, solvent: "C6D6" }, { id: 4, solvent: "CD3CN" }, { id: 5, solvent: "CD3OD" }, { id: 6, solvent: "D2O" }]
+	};
     $scope.availableSolvents = solventsList;
+    $scope.rangeFilter.deuteratedSolvent = $scope.rangeFilter.deuteratedSolvents[0];
 
     $scope.setSolvent = function (currentSolvent, selectedSolvent) {
         currentSolvent.name = selectedSolvent.name;
         currentSolvent.mass = selectedSolvent.mass;
         currentSolvent.nrH = selectedSolvent.nrH;
+        currentSolvent.HData = selectedSolvent.HData;
     }
+
 
     $scope.addSolvent = function () {
         $scope.solvents.push(angular.copy($scope.availableSolvents[0]));
@@ -33,6 +51,45 @@ function NMRSolventCalculatorControl($scope) {
         true
     );
 
+    $scope.$watch(function () {
+    
+    	return angular.toJson([$scope.rangeFilter.ppm, $scope.rangeFilter.delta, $scope.rangeFilter.deuteratedSolvent]);
+		},
+		function (newval, oldval) {
+			checkRange();
+		},
+		true
+	);
+
+	function isInRange(x, min, max) {
+		return x >= min && x <= max;
+	}
+
+	function checkRange()
+	{
+		var delta = parseFloat($scope.rangeFilter.delta);
+		var ppm = parseFloat($scope.rangeFilter.ppm);
+		var minimun = ppm - delta;
+		var maximum = ppm + delta;
+		angular.forEach($scope.availableSolvents,
+			function (solvent)
+			{
+				solvent.inRange = false;
+				angular.forEach(solvent.HData, function(Hdata)
+				{
+					if (!solvent.inRange) {
+						var Hvalue = Hdata.values[$scope.rangeFilter.deuteratedSolvent.id];
+						if (isInRange(Hvalue, minimun, maximum)) {
+							solvent.inRange = true;
+						}
+						
+					}
+
+					
+				});
+			});
+
+	}
 
     function validateSolvents() {
         angular.forEach($scope.solvents,
@@ -102,13 +159,7 @@ function NMRSolventCalculatorControl($scope) {
             });
     }
 
-    var solvent = {
-        name: "Product",
-        integral: 1,
-        mass: 0,
-        nrH: 1,
-        relativeH: 0
-    };
+
     $scope.solvents = [solvent];
     $scope.addSolvent();
 }

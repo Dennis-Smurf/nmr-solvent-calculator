@@ -1,91 +1,135 @@
 <!DOCTYPE html>
 <html ng-app="NMRSolventCalculatorModule" id="ng-app">
 <head>
-    <title>nmr massa percentage calculator</title>
-    <meta http-equiv="X-UA-Compatible" content="edge" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/solvents.css" rel="stylesheet" />
-    <link href="Content/validation.css" rel="stylesheet" />
-    <!--[if lte IE 8]>
+	<title>nmr massa percentage calculator</title>
+	<meta http-equiv="X-UA-Compatible" content="edge" />
+	<link href="Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="Content/solvents.css" rel="stylesheet" />
+	<link href="Content/validation.css" rel="stylesheet" />
+	<!--[if lte IE 8]>
         <script type="text/javascript" src="Scripts/json2.js">
     </script><![endif]-->
-    <script src="Scripts/Solvents.js"></script>
-    <script src="Scripts/angular.min.js"></script>
-    <script src="Scripts/controllers.js"></script>
+	<script src="Scripts/Solvents.js"></script>
+	<script src="Scripts/angular.min.js"></script>
+	<script src="Scripts/controllers.js"></script>
 </head>
 <body ng-controller="NMRSolventCalculatorControl">
-    <br />
-    <div class="span8">
-        <h4><a href="https://github.com/Dennis-Smurf/NMRSolventCalculatorAng">NMR solvent residue calculator</a></h4>
-        <br />
-        <table class="table table-condensed table-hover">
-            <thead>
-                <tr>
-                    <th>(im)purity</th>
-                    <th>mass</th>
-                    <th># of H</th>
-                    <th>integral</th>
-                    <th>mol%</th>
-                    <th>wt%</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="solvent in solvents">
-                    <td>
-                        <div ng-switch on="$first">
-                            <span ng-switch-when="true">{{solvent.name}}
-                            </span>
-                            <div ng-switch-default class="btn-group">
-                                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <span>{{solvent.name}}</span>
-                                    <span class="caret"></span>
-                                </a>&nbsp;
-                        <i ng-class="getSolventClass(solvent.name)"></i>
-                                <div class="dropdown-menu span8">
-                                    <div class="span2" ng-repeat="availableSolvent in availableSolvents">
-                                        <a href="#" ng-click="setSolvent(solvent, availableSolvent)">
-                                            <i ng-class="getSolventClass(availableSolvent.name)"></i>
-                                            <span>{{availableSolvent.name}}</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <input type="text" class="input-mini" placeholder="Mass" ng-model="solvent.mass" />
-                    </td>
-                    <td>
-                        <input type="text" placeholder="nrH" class="input-mini" ng-model="solvent.nrH" />
-                    </td>
-                    <td>
-                        <input type="text" placeholder="integral" class="input-mini" ng-model="solvent.integral" />
-                    </td>
-                    <td>
-                        <div>
-                            <span ng-show="!hasErrors">{{solvent.molPercentage | number:2}}%</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <span ng-show="!hasErrors">{{solvent.weightPercentage | number:2}}%</span>
-                        </div>
-                    </td>
-                    <td>
-                        <button class="btn" type="button" ng-show="!$first" ng-click="removeSolvent($index)">Remove</button>
-                    </td>
-                    <td>
-                        <code ng-show="solvent.hasErrors">Please enter a number</code>
-                        <code ng-show="solvent.nrHError">nrH should not be 0</code>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <button class="btn" ng-click="addSolvent()">Add im(purity)</button>
-    </div>
-    <script src="Scripts/jquery-1.9.1.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
+	<br />
+	<div class="span8">
+		<h4><a href="https://github.com/Dennis-Smurf/NMRSolventCalculatorAng">NMR solvent residue calculator</a></h4>
+		<br />
+
+		<table class="table table-condensed table-hover">
+			<thead>
+				<tr>
+					<th>(im)purity</th>
+					<th>mass</th>
+					<th># of H</th>
+					<th>integral</th>
+					<th>mol%</th>
+					<th>wt%</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="solvent in solvents">
+					<td>
+						<div ng-switch on="$first">
+							<span ng-switch-when="true">{{solvent.name}}
+							</span>
+							<div ng-switch-default class="btn-group">
+								<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+									<span>{{solvent.name}}</span>
+									<span class="caret"></span>
+								</a>&nbsp;
+								<i ng-class="getSolventClass(solvent.name)"></i>
+								<div class="dropdown-menu span8 ">
+							
+									<form class="control-group" >
+
+										<div class="span1">
+											<label>position</label>
+											<input class="span1" type="text" placeholder="ppm" ng-model="rangeFilter.ppm" />
+										</div>
+										<div class="span1">
+											<label>delta</label>
+											<input class="span1" type="text" placeholder="delta" ng-model="rangeFilter.delta" />
+										</div>
+										<div class="span1">
+											<label>solvent</label>
+											<select ng-model="rangeFilter.deuteratedSolvent" style="width: 110px;" ng-options="d.solvent for d in rangeFilter.deuteratedSolvents"></select>
+										</div>
+									</form>
+									
+									<div >
+										<table>
+											<tr ng-repeat="availableSolvent in availableSolvents" ng-click="setSolvent(solvent, availableSolvent)" style="cursor: hand; cursor: pointer;">
+												<td>
+													<a href="#" >
+														<i ng-class="getSolventClass(availableSolvent.name)"></i>
+													</a>
+												</td>
+												<td>
+													<a href="#" >
+														<span ng-class="{inRange: availableSolvent.inRange}">{{availableSolvent.name}}</span>
+
+													</a>
+												</td>
+												<td>
+													<span ng-repeat="hData in availableSolvent.HData">{{hData.values[rangeFilter.deuteratedSolvent.id]}} ({{hData.multiplet}})<sup ng-repeat="comment in hData.comments">{{comment}}</sup><span ng-show=" ! $last ">, </span>
+													</span>
+												</td>
+											</tr>
+										</table>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+					</td>
+					<td>
+						<input type="text" class="input-mini" placeholder="Mass" ng-model="solvent.mass" />
+					</td>
+					<td>
+						<input type="text" placeholder="nrH" class="input-mini" ng-model="solvent.nrH" />
+					</td>
+					<td>
+						<input type="text" placeholder="integral" class="input-mini" ng-model="solvent.integral" />
+					</td>
+					<td>
+						<div>
+							<span ng-show="!hasErrors">{{solvent.molPercentage | number:2}}%</span>
+						</div>
+					</td>
+					<td>
+						<div>
+							<span ng-show="!hasErrors">{{solvent.weightPercentage | number:2}}%</span>
+						</div>
+					</td>
+					<td>
+						<button class="btn" type="button" ng-show="!$first" ng-click="removeSolvent($index)">Remove</button>
+					</td>
+					<td>
+						<code ng-show="solvent.hasErrors">Please enter a number</code>
+						<code ng-show="solvent.nrHError">nrH should not be 0</code>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button class="btn" ng-click="addSolvent()">Add im(purity)</button>
+	</div>
+	<script src="Scripts/jquery-1.9.1.min.js"></script>
+
+	<script src="Scripts/bootstrap.min.js"></script>
+	<script>
+		$(function () {
+			$('.dropdown-menu').find('form').click(function (e) {
+
+				e.stopPropagation();
+			});
+		});
+	</script>
 </body>
 </html>
