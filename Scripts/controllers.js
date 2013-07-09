@@ -1,5 +1,5 @@
 function NMRSolventCalculatorControl($scope) {
-
+	
 	var solvent = {
 		name: "Product",
 		integral: 1,
@@ -7,16 +7,18 @@ function NMRSolventCalculatorControl($scope) {
 		nrH: 1,
 		relativeH: 0
 	};
+
+	var deuteratedSolvents = [{ id: 0, solvent: "CDCl3", residualPeak:7.26 }, { id: 1, solvent: "(CD3)2CO", residualPeak:2.05 }, { id: 2, solvent: "(CD3)2SO", residualPeak:2.50 }, { id: 3, solvent: "C6D6" , residualPeak:7.16}, { id: 4, solvent: "CD3CN", residualPeak:1.94 }, { id: 5, solvent: "CD3OD", residualPeak:3.31 }, { id: 6, solvent: "D2O", residualPeak: 4.79 }];
 	//TODO:per gedeutereerd oplosmiddel delta ppm
 
 
 	$scope.rangeFilter = {
-		ppm : 4,
-		delta : 0.1,
-		deuteratedSolvents: [{ id: 0, solvent: "CDCl3", residualPeak:7.26 }, { id: 1, solvent: "(CD3)2CO", residualPeak:2.05 }, { id: 2, solvent: "(CD3)2SO", residualPeak:2.50 }, { id: 3, solvent: "C6D6" , residualPeak:7.16}, { id: 4, solvent: "CD3CN", residualPeak:1.94 }, { id: 5, solvent: "CD3OD", residualPeak:3.31 }, { id: 6, solvent: "D2O", residualPeak: 4.79 }]
+		ppm : 4.1,
+		delta: 0.1,
+		deuteratedSolvents: deuteratedSolvents,
+		deuteratedSolvent: deuteratedSolvents[0]
 	};
-    $scope.availableSolvents = solventsList;
-    $scope.rangeFilter.deuteratedSolvent = $scope.rangeFilter.deuteratedSolvents[0];
+	$scope.availableSolvents = solventsList;
 
     $scope.setSolvent = function (currentSolvent, selectedSolvent) {
         currentSolvent.name = selectedSolvent.name;
