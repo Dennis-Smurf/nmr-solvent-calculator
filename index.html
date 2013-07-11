@@ -3,9 +3,11 @@
 <head>
 	<title>nmr massa percentage calculator</title>
 	<meta http-equiv="X-UA-Compatible" content="edge" />
-	<link href="Content/bootstrap.min.css" rel="stylesheet" />
+		<link href="Content/bootstrap.min.css" rel="stylesheet" />
+
 	<link href="Content/solvents.css" rel="stylesheet" />
 	<link href="Content/validation.css" rel="stylesheet" />
+
 	<!--[if lte IE 8]>
         <script type="text/javascript" src="Scripts/json2.js">
     </script><![endif]-->
@@ -136,7 +138,7 @@
 						</div>
 					</td>
 					<td>
-						<button class="btn" type="button" ng-show="!$first" ng-click="removeSolvent($index)">Remove</button>
+						<i class="icon-remove" type="button" ng-show="!$first" ng-click="removeSolvent($index)"></i>
 					</td>
 					<td>
 						<code ng-show="solvent.hasErrors">Please enter a number</code>

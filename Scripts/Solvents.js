@@ -47,7 +47,7 @@
     	HData: [
 					{ multiplet: "CH<sub>3</sub>CO s", values: [2.05, 1.97, 1.99, 1.65, 1.97, 2.01, 2.07] },
 					{ multiplet: "C<i>H</i><sub>2</sub>CH<sub>3</sub> q, 7", values: [4.12, 4.05, 4.03, 3.89, 4.06, 4.09, 4.14] },
-					{ multiplet: "CH<sub>2</sub>C<i>H</i><sub>3</sub> t, 7", values: [1.26, 1.20, 1.17, 0.92, 1.20, 1.24, 1.24] },
+					{ multiplet: "CH<sub>2</sub>C<i>H</i><sub>3</sub> t, 7", values: [1.26, 1.20, 1.17, 0.92, 1.20, 1.24, 1.24] }
     	]
     },
     {
@@ -55,7 +55,7 @@
     	HData: [
 					{ multiplet: "CH<sub>3</sub>CO s", values: [2.14, 2.07, 2.07, 1.58, 2.06, 2.12, 2.19] },
 					{ multiplet: "C<i>H</i><sub>2</sub>CH<sub>3</sub> q, 7", values: [2.46, 2.45, 2.43, 1.81, 2.43, 2.50, 3.18] },
-					{ multiplet: "CH<sub>2</sub>C<i>H</i><sub>3</sub> t, 7", values: [1.06, 0.96, 0.91, 0.85, 0.96, 1.01, 1.26] },
+					{ multiplet: "CH<sub>2</sub>C<i>H</i><sub>3</sub> t, 7", values: [1.06, 0.96, 0.91, 0.85, 0.96, 1.01, 1.26] }
     	]
     },
     {
