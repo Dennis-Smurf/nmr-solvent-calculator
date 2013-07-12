@@ -38,38 +38,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-responsive.css" />
-    <Content Include="Content\bootstrap-responsive.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\glyphicons-halflings-white.png" />
-    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\lib\bootstrap-responsive.css" />
+    <Content Include="Content\lib\bootstrap-responsive.min.css" />
+    <Content Include="Content\lib\bootstrap.css" />
+    <Content Include="Content\lib\bootstrap.min.css" />
+    <Content Include="Content\lib\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\lib\images\glyphicons-halflings.png" />
     <Content Include="Content\images\solvents.gif" />
     <Content Include="Content\solvents.css" />
     <Content Include="Content\validation.css" />
     <Content Include="index.html" />
-    <Content Include="Scripts\angular-bootstrap-prettify.js" />
-    <Content Include="Scripts\angular-bootstrap-prettify.min.js" />
-    <Content Include="Scripts\angular-bootstrap.js" />
-    <Content Include="Scripts\angular-bootstrap.min.js" />
-    <Content Include="Scripts\angular-cookies.js" />
-    <Content Include="Scripts\angular-cookies.min.js" />
-    <Content Include="Scripts\angular-loader.js" />
-    <Content Include="Scripts\angular-loader.min.js" />
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-resource.js" />
-    <Content Include="Scripts\angular-resource.min.js" />
-    <Content Include="Scripts\angular-sanitize.js" />
-    <Content Include="Scripts\angular-sanitize.min.js" />
-    <Content Include="Scripts\angular-scenario.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\lib\angular-bootstrap-prettify.js" />
+    <Content Include="Scripts\lib\angular-bootstrap-prettify.min.js" />
+    <Content Include="Scripts\lib\angular-bootstrap.js" />
+    <Content Include="Scripts\lib\angular-bootstrap.min.js" />
+    <Content Include="Scripts\lib\angular-cookies.js" />
+    <Content Include="Scripts\lib\angular-cookies.min.js" />
+    <Content Include="Scripts\lib\angular-loader.js" />
+    <Content Include="Scripts\lib\angular-loader.min.js" />
+    <Content Include="Scripts\lib\angular-mocks.js" />
+    <Content Include="Scripts\lib\angular-resource.js" />
+    <Content Include="Scripts\lib\angular-resource.min.js" />
+    <Content Include="Scripts\lib\angular-sanitize.js" />
+    <Content Include="Scripts\lib\angular-sanitize.min.js" />
+    <Content Include="Scripts\lib\angular-scenario.js" />
+    <Content Include="Scripts\lib\angular.js" />
+    <Content Include="Scripts\lib\angular.min.js" />
+    <Content Include="Scripts\lib\bootstrap.js" />
+    <Content Include="Scripts\lib\bootstrap.min.js" />
     <Content Include="Scripts\controllers.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\json2.js" />
+    <Content Include="Scripts\lib\jquery-1.9.1.js" />
+    <Content Include="Scripts\lib\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\lib\json2.js" />
     <Content Include="Scripts\Solvents.js" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +78,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
