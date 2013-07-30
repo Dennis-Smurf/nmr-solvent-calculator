@@ -32,7 +32,7 @@
 	{
 		name: "MeCN", mass: 41.05, nrH: 3,
 		HData: [
-			{ multiplet: "CH<sub>3</sub> s", values: [2.10, 2.05, 2.07, 1.55, 1.96, 2.03, 2.06] }
+			{ multiplet: "CH<sub>3</sub> s", values: [2.01, 2.05, 2.07, 1.55, 1.96, 2.03, 2.06] }
 		]
 	},
 	{
