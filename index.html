@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="NMRSolventCalculatorModule" id="ng-app">
+<html id="ng-app">
 <head>
 	<title>nmr massa percentage calculator</title>
 	<meta http-equiv="X-UA-Compatible" content="edge" />
@@ -8,14 +8,10 @@
 
 	<link href="Content/solvents.css" rel="stylesheet" />
 	<link href="Content/validation.css" rel="stylesheet" />
+	<script data-main="scripts/main.js" src="Scripts/lib/require.js"></script>
 
-	<!--[if lte IE 8]>
-		<script type="text/javascript" src="Scripts/lib/json2.js">
-	</script><![endif]-->
-	<script src="Scripts/lib/angular.min.js"></script>
 
-	<script src="Scripts/Solvents.js"></script>
-	<script src="Scripts/controllers.js"></script>
+
 
 </head>
 <body ng-controller="NMRSolventCalculatorControl">
@@ -152,17 +148,5 @@
 		</table>
 		<button class="btn" ng-click="addSolvent()">Add im(purity)</button>
 	</div>
-
-	<script src="Scripts/lib/jquery-1.9.1.min.js"></script>
-	<script src="Scripts/lib/bootstrap.min.js"></script>
-
-	<script>
-		$(function () {
-			$('.dropdown-menu').find('form').click(function (e) {
-
-				e.stopPropagation();
-			});
-		});
-	</script>
 </body>
 </html>
