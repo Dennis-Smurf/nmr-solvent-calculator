@@ -49,6 +49,7 @@
     <Content Include="Content\validation.css" />
     <Content Include="index.html" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\DeuteratedSolvent.js" />
     <Content Include="Scripts\lib\angular-bootstrap-prettify.js" />
     <Content Include="Scripts\lib\angular-bootstrap-prettify.min.js" />
     <Content Include="Scripts\lib\angular-bootstrap.js" />
@@ -73,7 +74,7 @@
     <Content Include="Scripts\lib\json2.js" />
     <Content Include="Scripts\lib\require.js" />
     <Content Include="Scripts\main.js" />
-    <Content Include="Scripts\Solvents.js" />
+    <Content Include="Scripts\SolventResidue.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1,20 +1,12 @@
 'use strict';
 
-define(['app', 'solvents'], function (app, solvents) {
+define(['app', 'SolventResidue', 'DeuteratedSolvent'], function (app, SolventResidue, DeuteratedSolvent) {
 	return app.controller('NMRSolventCalculatorControl', ['$scope',	function NMRSolventCalculatorControl($scope) {
 			var solvent, deuteratedSolvents;
 
 			solvent = { name: "Product", integral: 1, mass: 0, nrH: 1, relativeH: 0 };
 
-			deuteratedSolvents = [
-				{ id: 0, solvent: "CDCl3", residualPeak: 7.26 },
-				{ id: 1, solvent: "(CD3)2CO", residualPeak: 2.05 },
-				{ id: 2, solvent: "(CD3)2SO", residualPeak: 2.50 },
-				{ id: 3, solvent: "C6D6", residualPeak: 7.16 },
-				{ id: 4, solvent: "CD3CN", residualPeak: 1.94 },
-				{ id: 5, solvent: "CD3OD", residualPeak: 3.31 },
-				{ id: 6, solvent: "D2O", residualPeak: 4.79 }
-			];
+			deuteratedSolvents = DeuteratedSolvent.List;
 
 			$scope.rangeFilter = {
 				ppm: 4.1,
@@ -23,7 +15,7 @@ define(['app', 'solvents'], function (app, solvents) {
 				deuteratedSolvent: deuteratedSolvents[0]
 			};
 
-			$scope.availableSolvents = solvents.solventsList;
+			$scope.availableSolvents = SolventResidue.List;
 
 			$scope.setSolvent = function (currentSolvent, selectedSolvent) {
 				currentSolvent.name = selectedSolvent.name;

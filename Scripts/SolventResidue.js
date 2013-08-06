@@ -1,5 +1,5 @@
 ﻿define({
-	solventsList: [
+	List: [
 		{ name: "impurity", mass: 0, nrH: 1, integral: 0 },
 		{
 			name: "MeOH", mass: 32.04, nrH: 3,

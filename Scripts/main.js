@@ -21,11 +21,13 @@ if (!window.JSON) {
 
 require(['angular', 'app', 'jquery', 'NMRSolventCalculatorControl', 'bootstrap'], function (angular, app, $) {
 		$(document).ready(function () {
-			angular.bootstrap(document,['NMRSolventCalculatorModule']);
+			angular.bootstrap(document, ['NMRSolventCalculatorModule']);
+
 			$(function () {
 				$('.dropdown-menu').find('form').click(function (e) {
 					e.stopPropagation();
 				});
 			});
 		});
+		
 	});
