@@ -22,19 +22,19 @@ define(['app', 'SolventResidue', 'DeuteratedSolvent'], function (app, SolventRes
 				currentSolvent.mass = selectedSolvent.mass;
 				currentSolvent.nrH = selectedSolvent.nrH;
 				currentSolvent.HData = selectedSolvent.HData;
-			}
+			};
 
 			$scope.addSolvent = function () {
 				$scope.solvents.push(angular.copy($scope.availableSolvents[0]));
-			}
+			};
 
 			$scope.removeSolvent = function (id) {
 				$scope.solvents.splice(id, 1);
-			}
+			};
 
 			$scope.getSolventClass = function (name) {
 				return "solvent-" + name;
-			}
+			};
 
 			$scope.$watch(function () {
 				return angular.toJson($scope.solvents);
@@ -59,10 +59,11 @@ define(['app', 'SolventResidue', 'DeuteratedSolvent'], function (app, SolventRes
 			}
 
 			function checkRange() {
-				var delta = parseFloat($scope.rangeFilter.delta);
-				var ppm = parseFloat($scope.rangeFilter.ppm);
-				var minimun = ppm - delta;
-				var maximum = ppm + delta;
+				var delta, ppm, minimun, maximum;
+				delta = parseFloat($scope.rangeFilter.delta);
+				ppm = parseFloat($scope.rangeFilter.ppm);
+				minimun = ppm - delta;
+				maximum = ppm + delta;
 				angular.forEach($scope.availableSolvents,
 					function (solvent) {
 						solvent.inRange = false;
@@ -80,9 +81,10 @@ define(['app', 'SolventResidue', 'DeuteratedSolvent'], function (app, SolventRes
 			function validateSolvents() {
 				$scope.hasErrors = false;
 				angular.forEach($scope.solvents, function (solvent) {
-					var integral = parseFloat(solvent.integral);
-					var nrH = parseFloat(solvent.nrH);
-					var mass = parseFloat(solvent.mass);
+					var integral, nrH, mass;
+					 integral = parseFloat(solvent.integral);
+					 nrH = parseFloat(solvent.nrH);
+					 mass = parseFloat(solvent.mass);
 					solvent.nrHError = false;
 					solvent.hasErrors = false;
 					if (isNaN(integral) || isNaN(nrH) || isNaN(mass)) {
@@ -95,15 +97,16 @@ define(['app', 'SolventResidue', 'DeuteratedSolvent'], function (app, SolventRes
 
 			function setRelativeH() {
 				angular.forEach($scope.solvents, function (solvent) {
-					var integral = parseFloat(solvent.integral);
+					var integral, nrH;
+					 integral = parseFloat(solvent.integral);
 					if (isNaN(integral)) {
 						integral = 0;
 					}
-					var nrH = parseFloat(solvent.nrH);
+					 nrH = parseFloat(solvent.nrH);
 					if (isNaN(nrH)) {
 						return 0;
 					} else {
-						if (nrH == 0) {
+						if (nrH === 0) {
 							solvent.relativeH = 0;
 						} else {
 							solvent.relativeH = integral / nrH;
@@ -113,11 +116,12 @@ define(['app', 'SolventResidue', 'DeuteratedSolvent'], function (app, SolventRes
 			}
 
 			function setweightPercentage() {
-				var totalrelH = 0;
+				var totalrelH, totalRelativemass;
+				 totalrelH = 0;
 				angular.forEach($scope.solvents, function (solvent) {
 					totalrelH += solvent.relativeH;
 				});
-				var totalRelativemass = 0;
+				 totalRelativemass = 0;
 				angular.forEach($scope.solvents, function (solvent) {
 					if (totalrelH > 0) {
 						solvent.molPercentage = solvent.relativeH * 100 / totalrelH;

@@ -4,7 +4,7 @@ require.config({
 	paths: {
 		jquery: "lib/jquery-1.9.1.min",
 		angular: "lib/angular.min",
-		bootstrap: "lib/bootstrap.min",
+		bootstrap: "lib/bootstrap.min"
 	},
 	shim: {
 		angular : {exports : 'angular'},
