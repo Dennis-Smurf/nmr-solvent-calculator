@@ -4,7 +4,7 @@ define(['app', 'SolventResidue', 'DeuteratedSolvent'], function (app, SolventRes
 	return app.controller('NMRSolventCalculatorController', ['$scope',	function NMRSolventCalculatorControl($scope) {
 			var solvent, deuteratedSolvents;
 
-			solvent = { name: "Product", integral: 1, mass: 0, nrH: 1, relativeH: 0 };
+			solvent = SolventResidue.Product;
 
 			deuteratedSolvents = DeuteratedSolvent.List;
 

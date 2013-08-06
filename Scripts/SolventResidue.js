@@ -1,4 +1,5 @@
 ﻿define({
+	Product : { name: "Product", integral: 1, mass: 0, nrH: 1, relativeH: 0 },
 	List: [
 		{ name: "impurity", mass: 0, nrH: 1, integral: 0 },
 		{
