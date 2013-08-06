@@ -1,7 +1,7 @@
 'use strict';
 
 define(['app', 'SolventResidue', 'DeuteratedSolvent'], function (app, SolventResidue, DeuteratedSolvent) {
-	return app.controller('NMRSolventCalculatorControl', ['$scope',	function NMRSolventCalculatorControl($scope) {
+	return app.controller('NMRSolventCalculatorController', ['$scope',	function NMRSolventCalculatorControl($scope) {
 			var solvent, deuteratedSolvents;
 
 			solvent = { name: "Product", integral: 1, mass: 0, nrH: 1, relativeH: 0 };
@@ -78,6 +78,7 @@ define(['app', 'SolventResidue', 'DeuteratedSolvent'], function (app, SolventRes
 			}
 
 			function validateSolvents() {
+				$scope.hasErrors = false;
 				angular.forEach($scope.solvents, function (solvent) {
 					var integral = parseFloat(solvent.integral);
 					var nrH = parseFloat(solvent.nrH);
@@ -88,6 +89,7 @@ define(['app', 'SolventResidue', 'DeuteratedSolvent'], function (app, SolventRes
 						solvent.hasErrors = true;
 						$scope.hasErrors = true;
 					}
+
 				});
 			}
 

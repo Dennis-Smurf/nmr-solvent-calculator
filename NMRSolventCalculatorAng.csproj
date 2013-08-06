@@ -68,7 +68,7 @@
     <Content Include="Scripts\lib\angular.min.js" />
     <Content Include="Scripts\lib\bootstrap.js" />
     <Content Include="Scripts\lib\bootstrap.min.js" />
-    <Content Include="Scripts\NMRSolventCalculatorControl.js" />
+    <Content Include="Scripts\NMRSolventCalculatorController.js" />
     <Content Include="Scripts\lib\jquery-1.9.1.js" />
     <Content Include="Scripts\lib\jquery-1.9.1.min.js" />
     <Content Include="Scripts\lib\json2.js" />

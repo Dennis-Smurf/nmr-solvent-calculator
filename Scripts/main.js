@@ -19,7 +19,7 @@ if (!window.JSON) {
 	require(['lib/json2']);
 }
 
-require(['angular', 'app', 'jquery', 'NMRSolventCalculatorControl', 'bootstrap'], function (angular, app, $) {
+require(['angular', 'app', 'jquery', 'NMRSolventCalculatorController', 'bootstrap'], function (angular, app, $) {
 		$(document).ready(function () {
 			angular.bootstrap(document, ['NMRSolventCalculatorModule']);
 
