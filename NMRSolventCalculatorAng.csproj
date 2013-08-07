@@ -51,26 +51,10 @@
     <Content Include="index.html" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\DeuteratedSolvent.js" />
-    <Content Include="Scripts\lib\angular-bootstrap-prettify.js" />
-    <Content Include="Scripts\lib\angular-bootstrap-prettify.min.js" />
-    <Content Include="Scripts\lib\angular-bootstrap.js" />
     <Content Include="Scripts\lib\angular-bootstrap.min.js" />
-    <Content Include="Scripts\lib\angular-cookies.js" />
-    <Content Include="Scripts\lib\angular-cookies.min.js" />
-    <Content Include="Scripts\lib\angular-loader.js" />
-    <Content Include="Scripts\lib\angular-loader.min.js" />
-    <Content Include="Scripts\lib\angular-mocks.js" />
-    <Content Include="Scripts\lib\angular-resource.js" />
-    <Content Include="Scripts\lib\angular-resource.min.js" />
-    <Content Include="Scripts\lib\angular-sanitize.js" />
-    <Content Include="Scripts\lib\angular-sanitize.min.js" />
-    <Content Include="Scripts\lib\angular-scenario.js" />
-    <Content Include="Scripts\lib\angular.js" />
     <Content Include="Scripts\lib\angular.min.js" />
-    <Content Include="Scripts\lib\bootstrap.js" />
     <Content Include="Scripts\lib\bootstrap.min.js" />
     <Content Include="Scripts\NMRSolventCalculatorController.js" />
-    <Content Include="Scripts\lib\jquery-1.9.1.js" />
     <Content Include="Scripts\lib\jquery-1.9.1.min.js" />
     <Content Include="Scripts\lib\json2.js" />
     <Content Include="Scripts\lib\require.js" />
@@ -78,7 +62,6 @@
     <Content Include="Scripts\SolventResidue.js" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
