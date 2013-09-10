@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "NMR solvent residues calculator",
+  "version": "1",
+   "update_url": "http://mercaweb2/nmr/updates.xml",
+  "minimum_chrome_version": "23",
+  "app": {
+    "background": {
+      "scripts": ["main.js"]
+    }
+  }
+}

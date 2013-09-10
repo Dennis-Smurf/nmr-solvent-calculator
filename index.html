@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html id="ng-app">
+<html id="ng-app" ng-csp="">
 <head>
-	<title>nmr massa percentage calculator</title>
+	<title>NMR solvent residues calculator</title>
 	<meta http-equiv="X-UA-Compatible" content="edge" />
 
 	<link href="Content/lib/bootstrap.min.css" rel="stylesheet" />
 
 	<link href="Content/solvents.css" rel="stylesheet" />
 	<link href="Content/validation.css" rel="stylesheet" />
+	<link href="Content/main.css" rel="stylesheet" />
 
-	<script data-main="scripts/main.js" src="Scripts/lib/require.js"></script>
+	<script data-main="scripts/init.js" src="Scripts/lib/require.js"></script>
 
 </head>
-<body ng-controller="NMRSolventCalculatorController">
+<body ng-controller="NMRSolventCalculatorController" >
 	<br />
 	<div class="span8">
-		<h4><a href="https://github.com/Dennis-Smurf/NMRSolventCalculatorAng">NMR solvent residue calculator</a></h4>
+		<h4><a href="https://github.com/Dennis-Smurf/NMRSolventCalculatorAng" target="_blank">NMR solvent residues calculator</a></h4>
 		<br />
 
 		<table class="table table-condensed table-hover">

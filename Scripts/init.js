@@ -2,7 +2,7 @@
 
 require.config({
 	paths: {
-		jquery: "lib/jquery-1.9.1.min",
+		jquery: "lib/jquery-2.0.3.min",
 		angular: "lib/angular.min",
 		bootstrap: "lib/bootstrap.min"
 	},
@@ -12,7 +12,8 @@ require.config({
 	},
 	priority: [
 	'angular'
-	]
+	],
+	urlArgs: "bust=" + (new Date()).getTime()
 });
 
 if (!window.JSON) {
@@ -29,5 +30,15 @@ require(['angular', 'app', 'jquery', 'NMRSolventCalculatorController', 'bootstra
 				});
 			});
 		});
-		
-	});
+
+	/*
+		$(function () {
+			$.ajax({
+				type: "POST", dataType: "json", url: "http://mercaportal/smurfweb/employees/employeesdata", data: "", success: function (data) {
+					console.log(data);
+				}, error: function (XMLHttpRequest, textStatus, errorThrown) { console.log(textStatus); }
+			});
+		});
+		*/
+});
+
