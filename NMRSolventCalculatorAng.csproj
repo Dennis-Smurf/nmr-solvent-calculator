@@ -47,6 +47,7 @@
     <Content Include="Content\lib\images\glyphicons-halflings-white.png" />
     <Content Include="Content\lib\images\glyphicons-halflings.png" />
     <Content Include="Content\images\solvents.gif" />
+    <Content Include="Content\main.css" />
     <Content Include="Content\solvents.css" />
     <Content Include="Content\validation.css" />
     <Content Include="index.html" />
