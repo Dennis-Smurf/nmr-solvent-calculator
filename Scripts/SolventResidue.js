@@ -94,7 +94,7 @@
 			]
 		},
 		{
-			name: "DMF", mass: 73.10, nrH: 6,
+			name: "DMF", mass: 73.10, nrH: 3,
 			HData: [
 				{ multiplet: "CH s", values: [8.02, 7.96, 7.95, 7.63, 7.92, 7.97, 7.92] },
 				{ multiplet: "CH<sub>3</sub> s", values: [2.96, 2.94, 2.89, 2.36, 2.89, 2.99, 3.01] },
