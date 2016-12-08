@@ -54,9 +54,8 @@
 		{
 			name: "TBME", mass: 88.15, nrH: 3,
 			HData: [
-				{ multiplet: "CH<sub>3</sub>CO s", values: [2.14, 2.07, 2.07, 1.58, 2.06, 2.12, 2.19] },
-				{ multiplet: "C<i>H</i><sub>2</sub>CH<sub>3</sub> q, 7", values: [2.46, 2.45, 2.43, 1.81, 2.43, 2.50, 3.18] },
-				{ multiplet: "CH<sub>2</sub>C<i>H</i><sub>3</sub> t, 7", values: [1.06, 0.96, 0.91, 0.85, 0.96, 1.01, 1.26] }
+				{ multiplet: "CCH<sub>3</sub> s", values: [1.19, 1.13, 1.11, 1.07, 1.14, 1.15, 1.21] },
+				{ multiplet: "OCH<sub>3</sub> s", values: [3.22, 3.13, 3.08, 3.04, 3.13, 3.20, 3.22] }
 			]
 		},
 		{
